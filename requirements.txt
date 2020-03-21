@@ -1,0 +1,12 @@
+Cartopy==0.17.0
+matplotlib==3.1.1
+scipy==1.3.1
+pandas==0.25.1
+Shapely==1.7.0
+numpy==1.18.2
+plotly==4.3.0
+bokeh==1.4.0
+geopandas==0.7.0
+streamlit==0.56.0
+geopy==1.20.0
+altair==4.0.1
