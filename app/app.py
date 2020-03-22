@@ -29,7 +29,7 @@ import math
 from scipy.optimize import curve_fit
 import plotly.express as px
 
-st.header("Cas de COVID-19 au Sénégal 🇸🇳")
+st.header("COVID-19 au Sénégal 🇸🇳")
 
 st.markdown("*Dernière mise à jour: 22/03/2020*")
 
@@ -234,4 +234,4 @@ st.write("6. Le temps d'hospitalisation moyen pour le moment est de : ", np.mean
 
 st.markdown("---")
 
-st.write("Réalisé par Maël Fabien pour Dakar Institute of Technology: https://dit.sn/")
+st.markdown("Réalisé par [Maël Fabien](https://maelfabien.github.io/) et [Dakar Institute of Technology](https://dit.sn/)")
