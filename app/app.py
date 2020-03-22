@@ -31,9 +31,11 @@ import plotly.express as px
 
 st.header("Cas de COVID-19 au Sénégal 🇸🇳")
 
-st.markdown("Si vous avez des symptômes, appelez les urgences au 70 717 14 92, 76 765 97 31 ou 78 172 10 81. Un numéro vert a été mis en place par le Ministère de la Santé au 800 00 50 50. En cas d'urgence, appelez le SAMU au 1515.")
-
 st.markdown("*Dernière mise à jour: 22/03/2020*")
+
+st.markdown("Si vous avez des symptômes, appelez les urgences au 70 717 14 92, 76 765 97 31 ou 78 172 10 81. Un numéro vert a été mis en place par le Ministère de la Santé au 800 00 50 50. En cas d'urgence, appelez le SAMU au 1515.")
+st.markdown("Si vous avez des doutes, vous pouvez tester vos symptomes sur Prevcovid19: http://www.prevcovid19.com/#/teste")
+
 st.write("La table de donnée ci-dessous a été contruite à partir des tweets du Ministère de la Santé et de l'Action Sociale du Sénégal. La source peut être trouvée ici: https://twitter.com/MinisteredelaS1")
 st.write("Le code et la base de données peuvent être trouvés ici: https://github.com/maelfabien/COVID-19-Senegal")
 # I. Dataframe
@@ -51,10 +53,14 @@ total_positif = evol_cases.tail(1)['Positif'][0]
 total_negatif = evol_cases.tail(1)['Negatif'][0]
 total_decede = evol_cases.tail(1)['Décédé'][0]
 total_geuri = evol_cases.tail(1)['Guéri'][0]
-st.write("Nombre de cas positifs: ", total_positif)
-st.write("Nombre de cas negatifs: ", total_negatif)
+st.write("Nombre de malades: ", total_positif - total_geuri)
 st.write("Nombre de décès: ", total_decede)
 st.write("Nombre de guérisons: ", total_geuri)
+st.write("Pourcentage de guerison: ", np.round(total_geuri / total_positif, 3) * 100, " %")
+st.write("Nombre total de cas positifs: ", total_positif)
+st.write("Nombre de cas negatifs: ", total_negatif)
+st.write("Nombre de tests réalisés: ", total_positif + total_negatif)
+st.write("Pourcentage de tests positifs: ", np.round(total_positif / (total_positif + total_negatif), 3) * 100, " %")
 
 # II. Map
 st.markdown("---")
@@ -143,26 +149,29 @@ st.write(points + lines)
 st.markdown("---")
 st.subheader("Contamination")
 
-st.write("Nous distinguon les cas importés (voyageurs en provenance de l'extérieur) des cas contact qui ont été en contact avec une personne malade.")
+st.write("Nous distinguon les cas importés (voyageurs en provenance de l'extérieur) des cas contact qui ont été en contact avec une personne malade. Les cas Communauté sont des cas dont les contacts directs ne peuvent être établis, et donc les plus dangereux.")
 
 facteur = df[['Date', 'Facteur']].dropna()
 facteur['Count'] = 1
 
 importe = facteur[facteur['Facteur'] == "Importé"].groupby("Date").sum().cumsum().reset_index()
 voyage = facteur[facteur['Facteur'] == "Contact"].groupby("Date").sum().cumsum().reset_index()
+communaute = facteur[facteur['Facteur'] == "Communauté"].groupby("Date").sum().cumsum().reset_index()
 
 df_int = pd.merge(importe, voyage, left_on='Date', right_on='Date', how='outer')
+df_int = pd.merge(df_int, communaute, left_on='Date', right_on='Date', how='outer')
+
 df_int['Date'] = pd.to_datetime(df_int['Date'], dayfirst=True)
 df_int = df_int.sort_values("Date").ffill().fillna(0)
-df_int.columns = ["Date", "Importes", "Contact"]
+df_int.columns = ["Date", "Importes", "Contact", "Communauté"]
 
 ch0 = alt.Chart(df_int).transform_fold(
-    ['Importes', 'Contact'],
+    ['Importes', 'Contact', 'Communauté'],
 ).mark_line().encode(
     x='Date:T',
     y='value:Q',
     color='key:N'
-).properties(title="Evolution des cas contacts et importés", height=500, width=700)
+).properties(title="Evolution des cas contacts, communauté et importés", height=500, width=700)
 
 st.altair_chart(ch0)
 
