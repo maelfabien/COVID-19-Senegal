@@ -33,7 +33,7 @@ st.header("Cas de COVID-19 au Sénégal 🇸🇳")
 
 st.markdown("Si vous avez des symptômes, appelez les urgences au 70 717 14 92, 76 765 97 31 ou 78 172 10 81. Un numéro vert a été mis en place par le Ministère de la Santé au 800 00 50 50. En cas d'urgence, appelez le SAMU au 1515.")
 
-st.markdown("*Dernière mise à jour: 21/03/2020*")
+st.markdown("*Dernière mise à jour: 22/03/2020*")
 st.write("La table de donnée ci-dessous a été contruite à partir des tweets du Ministère de la Santé et de l'Action Sociale du Sénégal. La source peut être trouvée ici: https://twitter.com/MinisteredelaS1")
 st.write("Le code et la base de données peuvent être trouvés ici: https://github.com/maelfabien/COVID-19-Senegal")
 # I. Dataframe
