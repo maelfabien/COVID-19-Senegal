@@ -97,7 +97,7 @@ geosource = GeoJSONDataSource(geojson = grid)
 pointsource = ColumnDataSource(summary)
 
 hover = HoverTool(
-    tooltips = [('Ville', '@Ville'), ('Nombre de cas positifs', '@Positif')]
+    tooltips = [('Ville', '@Ville'), ('Nombre de cas positifs (au moins)', '@Positif')]
 )
 
 #Create figure object.
@@ -116,7 +116,7 @@ patch = p.patches('xs','ys', source = geosource, fill_color = '#fff7bc',
 patch = p.patches('xs','ys', source = geosource, fill_color = 'lightgrey',
           line_color = 'black', line_width = 0.25, fill_alpha = 1)
 
-p.circle('longitude','latitude',source=pointsource, size='Positif')
+p.circle('longitude','latitude',source=pointsource, size=15)
 
 st.bokeh_chart(p)
 
