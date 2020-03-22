@@ -43,7 +43,7 @@ st.write("Le code et la base de données peuvent être trouvés ici: https://git
 df = pd.read_csv("COVID_Dakar.csv", sep=";")
 df['Date'] = pd.to_datetime(df['Date'], dayfirst=True)
 
-st.write(df)
+#st.write(df)
 
 evol_cases = df[['Date', 'Positif', 'Negatif', 'Décédé', 'Guéri']].groupby("Date").sum().cumsum()
 
