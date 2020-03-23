@@ -74,12 +74,12 @@ total_geuri = evol_cases.tail(1)['Guéri'][0]
 st.markdown("Nombre de malades: <span style='font-size:1.5em;'>%s</span>"%(total_positif - total_geuri), unsafe_allow_html=True)
 st.markdown("Nombre de décès: <span style='font-size:1.5em;'>%s</span>"%(total_decede), unsafe_allow_html=True)
 st.markdown("Nombre de guérisons: <span style='font-size:1.5em;'>%s</span>"%(total_geuri), unsafe_allow_html=True)
-st.markdown("Pourcentage de guerison: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_geuri / total_positif, 3) * 100), unsafe_allow_html=True)
+st.markdown("Pourcentage de guerison: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_geuri / total_positif * 100, 3)), unsafe_allow_html=True)
 st.markdown("Taux de croissance journalier lissé sur les 2 derniers jours: <span style='font-size:1.5em;'>%s</span>"%(np.round(pd.DataFrame(np.sqrt(evol_cases['Positif'].pct_change(periods=2)+1)-1).tail(1)['Positif'][0] * 100, 2)), unsafe_allow_html=True)
 st.markdown("Nombre total de cas positifs: <span style='font-size:1.5em;'>%s</span>"%(total_positif), unsafe_allow_html=True)
 st.markdown("Nombre de tests negatifs: <span style='font-size:1.5em;'>%s</span>"%(total_negatif), unsafe_allow_html=True)
 st.markdown("Nombre de tests réalisés: <span style='font-size:1.5em;'>%s</span>"%(total_positif + total_negatif), unsafe_allow_html=True)
-st.markdown("Pourcentage de tests positifs: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_positif / (total_positif + total_negatif), 3) * 100), unsafe_allow_html=True)
+st.markdown("Pourcentage de tests positifs: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_positif / (total_positif + total_negatif) * 100, 3)), unsafe_allow_html=True)
 
 
 # II. Map
