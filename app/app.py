@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 import datetime
 import altair as alt
 
+# Compare to Netherlands
+import requests
+from bs4 import BeautifulSoup
+
 # Find coordinates
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="myapp2")
@@ -58,11 +62,11 @@ st.markdown("Nombre de malades: <span style='font-size:1.5em;'>%s</span>"%(total
 st.markdown("Nombre de décès: <span style='font-size:1.5em;'>%s</span>"%(total_decede), unsafe_allow_html=True)
 st.markdown("Nombre de guérisons: <span style='font-size:1.5em;'>%s</span>"%(total_geuri), unsafe_allow_html=True)
 st.markdown("Pourcentage de guerison: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_geuri / total_positif, 3) * 100), unsafe_allow_html=True)
+st.markdown("Taux de croissance journalier lissé sur les 2 derniers jours: <span style='font-size:1.5em;'>%s</span>"%(np.round(pd.DataFrame(np.sqrt(evol_cases['Positif'].pct_change(periods=2)+1)-1).tail(1)['Positif'][0] * 100, 2)), unsafe_allow_html=True)
 st.markdown("Nombre total de cas positifs: <span style='font-size:1.5em;'>%s</span>"%(total_positif), unsafe_allow_html=True)
 st.markdown("Nombre de tests negatifs: <span style='font-size:1.5em;'>%s</span>"%(total_negatif), unsafe_allow_html=True)
 st.markdown("Nombre de tests réalisés: <span style='font-size:1.5em;'>%s</span>"%(total_positif + total_negatif), unsafe_allow_html=True)
 st.markdown("Pourcentage de tests positifs: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_positif / (total_positif + total_negatif), 3) * 100), unsafe_allow_html=True)
-
 
 # II. Map
 st.markdown("---")
@@ -139,6 +143,32 @@ chart = alt.Chart(evol_cases.reset_index()).mark_line(point=True, strokeWidth=5)
 
 
 st.write(chart.interactive())
+
+st.markdown("---")
+st.subheader("Comparaison avec les Pays-Bas")
+
+st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 millions), et une comparaison peut rapidement être dressée. Bien que la progression semble plus lente pour le moment au Sénégal, les projections peuvent servir de base de reflexion. La situation au Sénégal est similaire à celle il y a 15 jours aux Pays-Bas, mais il aura fallu 7 jours aux Pays-Bas contre 18 au Sénégal pour y arriver. Les chiffres des Pays-Bas sont automatiquement extraits de cet article Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands")
+
+website_url = requests.get("https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands").text
+soup = BeautifulSoup(website_url,"lxml")
+
+My_table = soup.find("table",{"class":"wikitable mw-collapsible"})
+df_nl = pd.read_html(str(My_table))[0]['Cases[b]']['Total'].apply(lambda x: x.replace("[c]", ""))[:-2].apply(lambda x: int(x))
+df_nl = pd.DataFrame(df_nl)
+df_nl['Date'] = pd.read_html(str(My_table))[0]['Date[a]']['Date[a]'][:-2]
+
+df_nl_2 = pd.DataFrame(np.concatenate([np.zeros(12), np.array(df_nl['Total'])]))
+df_nl_2.columns = ["Netherlands"]
+
+df_nl = pd.concat([pd.DataFrame(df_nl_2),pd.DataFrame(evol_cases.reset_index()['Positif'])], ignore_index=True, axis=1)
+df_nl.columns = ['Netherlands', 'Senegal']
+
+plt.figure(figsize=(16,10))
+plt.plot(df_nl['Netherlands'], linestyle="--", linewidth=5, label="Pays-Bas")
+plt.plot(df_nl['Senegal'],label="Sénégal", linewidth=5)
+plt.title("Evolution des cas au Sénégal et aux Pays-Bas")
+plt.legend()
+st.pyplot(plt)
 
 # IV. Contamination
 st.markdown("---")
