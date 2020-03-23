@@ -53,14 +53,16 @@ total_positif = evol_cases.tail(1)['Positif'][0]
 total_negatif = evol_cases.tail(1)['Negatif'][0]
 total_decede = evol_cases.tail(1)['Décédé'][0]
 total_geuri = evol_cases.tail(1)['Guéri'][0]
-st.write("Nombre de malades: ", total_positif - total_geuri)
-st.write("Nombre de décès: ", total_decede)
-st.write("Nombre de guérisons: ", total_geuri)
-st.write("Pourcentage de guerison: ", np.round(total_geuri / total_positif, 3) * 100, " %")
-st.write("Nombre total de cas positifs: ", total_positif)
-st.write("Nombre de cas negatifs: ", total_negatif)
-st.write("Nombre de tests réalisés: ", total_positif + total_negatif)
-st.write("Pourcentage de tests positifs: ", np.round(total_positif / (total_positif + total_negatif), 3) * 100, " %")
+
+st.markdown("Nombre de malades: <span style='font-size:1.5em;'>%s</span>"%(total_positif - total_geuri), unsafe_allow_html=True)
+st.markdown("Nombre de décès: <span style='font-size:1.5em;'>%s</span>"%(total_decede), unsafe_allow_html=True)
+st.markdown("Nombre de guérisons: <span style='font-size:1.5em;'>%s</span>"%(total_geuri), unsafe_allow_html=True)
+st.markdown("Pourcentage de guerison: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_geuri / total_positif, 3) * 100), unsafe_allow_html=True)
+st.markdown("Nombre total de cas positifs: <span style='font-size:1.5em;'>%s</span>"%(total_positif), unsafe_allow_html=True)
+st.markdown("Nombre de tests negatifs: <span style='font-size:1.5em;'>%s</span>"%(total_negatif), unsafe_allow_html=True)
+st.markdown("Nombre de tests réalisés: <span style='font-size:1.5em;'>%s</span>"%(total_positif + total_negatif), unsafe_allow_html=True)
+st.markdown("Pourcentage de tests positifs: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_positif / (total_positif + total_negatif), 3) * 100), unsafe_allow_html=True)
+
 
 # II. Map
 st.markdown("---")
@@ -127,23 +129,16 @@ st.subheader("Evolution du nombre de cas positifs au Sénégal")
 highlight = alt.selection(type='single', on='mouseover',
                           fields=['Positif'], nearest=True)
 
-chart = alt.Chart(evol_cases.reset_index()).mark_line(color="#FFAA00").encode(
+chart = alt.Chart(evol_cases.reset_index()).mark_line(point=True, strokeWidth=5).encode(
     x='Date:T',
     y='Positif:Q',
     tooltip='Positif:Q'
-).properties(height=400, width=700)
-
-points = chart.mark_circle().encode(
-    opacity=alt.value(0)
 ).add_selection(
     highlight
-)
+).properties(height=400, width=700)
 
-lines = chart.mark_line().encode(
-    size=alt.condition(~highlight, alt.value(1), alt.value(3))
-)
 
-st.write(points + lines)
+st.write(chart.interactive())
 
 # IV. Contamination
 st.markdown("---")
@@ -167,11 +162,11 @@ df_int.columns = ["Date", "Importes", "Contact", "Communauté"]
 
 ch0 = alt.Chart(df_int).transform_fold(
     ['Importes', 'Contact', 'Communauté'],
-).mark_line().encode(
+).mark_line(size=5).encode(
     x='Date:T',
     y='value:Q',
     color='key:N'
-).properties(title="Evolution des cas contacts, communauté et importés", height=500, width=700)
+).properties(height=500, width=700)
 
 st.altair_chart(ch0)
 
