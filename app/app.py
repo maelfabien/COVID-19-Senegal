@@ -144,19 +144,29 @@ st.bokeh_chart(p)
 st.markdown("---")
 st.subheader("Evolution du nombre de cas positifs au Sénégal")
 
-highlight = alt.selection(type='single', on='mouseover',
-                          fields=['Positif'], nearest=True)
+st.write("La courbe 'Positif' représente l'ensemble des cas, et la courbe 'Actifs' élimine les cas guéris et représente le nombre de cas actifs.")
+evol_cases['Actifs'] = evol_cases['Positif'] - evol_cases['Guéri']
 
-chart = alt.Chart(evol_cases.reset_index()).mark_line(point=True, strokeWidth=5).encode(
+#highlight = alt.selection(type='single', on='mouseover',fields=['value'], nearest=True)
+
+#chart = alt.Chart(evol_cases.reset_index()).mark_line(point=True, strokeWidth=5).encode(x='Date:T', y='Actifs:Q', tooltip='Actifs:Q').add_selection(highlight).properties(height=400, width=700)
+
+#chart2 = alt.Chart(evol_cases.reset_index()).mark_line(point=True, strokeWidth=5).encode(x='Date:T',y='Positif:Q',tooltip='Positif:Q').properties(height=400, width=700)
+
+
+ch0 = alt.Chart(evol_cases.reset_index()).transform_fold(
+    ['Positif', 'Actifs'],
+).mark_line(size=5, point=True).encode(
     x='Date:T',
-    y='Positif:Q',
-    tooltip='Positif:Q'
-).add_selection(
-    highlight
+    y='value:Q',
+    color='key:N', 
+    tooltip="value:Q"
 ).properties(height=400, width=700)
 
+st.write(ch0)
+#altair_chart(ch0)
 
-st.write(chart.interactive())
+#st.write((chart + chart2).interactive())
 
 st.markdown("---")
 st.subheader("Comparaison avec les Pays-Bas")
@@ -180,6 +190,10 @@ st.write("Nous distinguon les cas importés (voyageurs en provenance de l'extér
 
 facteur = df[['Date', 'Facteur']].dropna()
 facteur['Count'] = 1
+
+st.write("Nombre total de cas importés: ", facteur[facteur['Facteur'] == "Importé"].groupby("Date").sum().sum()[0])
+st.write("Nombre total de cas contact: ", facteur[facteur['Facteur'] == "Contact"].groupby("Date").sum().sum()[0])
+st.write("Nombre total de cas communauté: ", facteur[facteur['Facteur'] == "Communauté"].groupby("Date").sum().sum()[0])
 
 importe = facteur[facteur['Facteur'] == "Importé"].groupby("Date").sum().cumsum().reset_index()
 voyage = facteur[facteur['Facteur'] == "Contact"].groupby("Date").sum().cumsum().reset_index()
