@@ -149,19 +149,7 @@ st.subheader("Comparaison avec les Pays-Bas")
 
 st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 millions), et une comparaison peut rapidement être dressée. Bien que la progression semble plus lente pour le moment au Sénégal, les projections peuvent servir de base de reflexion. La situation au Sénégal est similaire à celle il y a 15 jours aux Pays-Bas, mais il aura fallu 7 jours aux Pays-Bas contre 18 au Sénégal pour y arriver. Les chiffres des Pays-Bas sont automatiquement extraits de cet article Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands")
 
-website_url = requests.get("https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands").text
-soup = BeautifulSoup(website_url,"lxml")
-
-My_table = soup.find("table",{"class":"wikitable mw-collapsible"})
-df_nl = pd.read_html(str(My_table))[0]['Cases[b]']['Total'].apply(lambda x: x.replace("[c]", ""))[:-2].apply(lambda x: int(x))
-df_nl = pd.DataFrame(df_nl)
-df_nl['Date'] = pd.read_html(str(My_table))[0]['Date[a]']['Date[a]'][:-2]
-
-df_nl_2 = pd.DataFrame(np.concatenate([np.zeros(12), np.array(df_nl['Total'])]))
-df_nl_2.columns = ["Netherlands"]
-
-df_nl = pd.concat([pd.DataFrame(df_nl_2),pd.DataFrame(evol_cases.reset_index()['Positif'])], ignore_index=True, axis=1)
-df_nl.columns = ['Netherlands', 'Senegal']
+df_nl = pd.read_csv("df_nl.csv")
 
 plt.figure(figsize=(16,10))
 plt.plot(df_nl['Netherlands'], linestyle="--", linewidth=5, label="Pays-Bas")
