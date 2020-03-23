@@ -150,7 +150,7 @@ df_nl = pd.read_csv("df_nl.csv")
 plt.figure(figsize=(16,10))
 plt.plot(df_nl['Netherlands'], linestyle="--", linewidth=5, label="Pays-Bas")
 plt.plot(df_nl['Senegal'],label="Sénégal", linewidth=5)
-plt.title("Evolution des cas au Sénégal et aux Pays-Bas")
+plt.figtext(.5,.9,'Evolution des cas au Sénégal et aux Pays-Bas', fontsize=30, ha='center')
 plt.legend()
 st.pyplot(plt)
 
