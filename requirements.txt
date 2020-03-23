@@ -10,4 +10,3 @@ pandas==0.25.1
 geopandas==0.7.0
 altair==4.0.1
 bokeh==1.4.0
-matplotlib==3.1.1
