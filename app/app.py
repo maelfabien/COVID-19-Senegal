@@ -7,10 +7,6 @@ import matplotlib.pyplot as plt
 import datetime
 import altair as alt
 
-# Compare to Netherlands
-import requests
-from bs4 import BeautifulSoup
-
 # Find coordinates
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="myapp2")
