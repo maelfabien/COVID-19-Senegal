@@ -147,13 +147,6 @@ st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 m
 
 df_nl = pd.read_csv("df_nl.csv")
 
-plt.figure(figsize=(16,10))
-plt.plot(df_nl['Netherlands'], linestyle="--", linewidth=5, label="Pays-Bas")
-plt.plot(df_nl['Senegal'],label="Sénégal", linewidth=5)
-plt.title("Evolution des cas au Sénégal et aux Pays-Bas")
-plt.legend()
-st.pyplot(plt)
-
 # IV. Contamination
 st.markdown("---")
 st.subheader("Contamination")
