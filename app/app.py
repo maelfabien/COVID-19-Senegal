@@ -31,13 +31,26 @@ import plotly.express as px
 
 st.header("COVID-19 au Sénégal 🇸🇳")
 
-st.markdown("*Dernière mise à jour: 22/03/2020*")
+st.sidebar.markdown("*Dernière mise à jour: 22/03/2020*")
+st.sidebar.markdown("---")
+st.sidebar.header("Ressources utiles")
+st.sidebar.markdown("Numéro Vert du Ministère: **800 00 50 50**")
+st.sidebar.markdown("Samu: **1515**")
+st.sidebar.markdown("Service USSD: **#2121#**")
+st.sidebar.markdown("[Testez vos symptomes sur Prevcovid19](http://www.prevcovid19.com/#/teste)")
+st.sidebar.markdown("[Tweets du Ministère de la Santé](https://twitter.com/MinisteredelaS1)")
+st.sidebar.markdown("[Base de données et code de l'application](https://github.com/maelfabien/COVID-19-Senegal)")
+st.sidebar.markdown("---")
 
-st.markdown("Si vous avez des symptômes, appelez les urgences au 70 717 14 92, 76 765 97 31 ou 78 172 10 81. Un numéro vert a été mis en place par le Ministère de la Santé au 800 00 50 50. En cas d'urgence, appelez le SAMU au 1515.")
-st.markdown("Si vous avez des doutes, vous pouvez tester vos symptomes sur Prevcovid19: http://www.prevcovid19.com/#/teste")
+st.sidebar.header("Contacter le Ministère")
 
-st.write("La table de donnée ci-dessous a été contruite à partir des tweets du Ministère de la Santé et de l'Action Sociale du Sénégal. La source peut être trouvée ici: https://twitter.com/MinisteredelaS1")
-st.write("Le code et la base de données peuvent être trouvés ici: https://github.com/maelfabien/COVID-19-Senegal")
+st.sidebar.markdown("Ministère de la santé et de l'Action Sociale / Fann Résidence")
+st.sidebar.markdown("Rue Aimé Césaire, Dakar, Sénégal")
+st.sidebar.markdown("+221 800 00 50 50 - contact@sante.gouv.sn")
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("Réalisé par [Maël Fabien](https://maelfabien.github.io/) et [Dakar Institute of Technology](https://dit.sn/)")
+
 # I. Dataframe
 
 df = pd.read_csv("COVID_Dakar.csv", sep=";")
@@ -63,6 +76,7 @@ st.markdown("Nombre total de cas positifs: <span style='font-size:1.5em;'>%s</sp
 st.markdown("Nombre de tests negatifs: <span style='font-size:1.5em;'>%s</span>"%(total_negatif), unsafe_allow_html=True)
 st.markdown("Nombre de tests réalisés: <span style='font-size:1.5em;'>%s</span>"%(total_positif + total_negatif), unsafe_allow_html=True)
 st.markdown("Pourcentage de tests positifs: <span style='font-size:1.5em;'>%s</span>"%(np.round(total_positif / (total_positif + total_negatif), 3) * 100), unsafe_allow_html=True)
+
 
 # II. Map
 st.markdown("---")
@@ -240,7 +254,3 @@ st.write("5. La plupart des personnes malades résident au Sénégal")
 st.write(df['Resident Senegal'].dropna().value_counts())
 
 st.write("6. Le temps d'hospitalisation moyen pour le moment est de : ", np.mean(df['Temps Hospitalisation (j)'].dropna()), " jours")
-
-st.markdown("---")
-
-st.markdown("Réalisé par [Maël Fabien](https://maelfabien.github.io/) et [Dakar Institute of Technology](https://dit.sn/)")
