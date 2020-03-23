@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import datetime
 import altair as alt
+import matplotlib.pyplot as plt
 
 # Find coordinates
 from geopy.geocoders import Nominatim
@@ -144,7 +145,14 @@ st.subheader("Comparaison avec les Pays-Bas")
 
 st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 millions), et une comparaison peut rapidement être dressée. Bien que la progression semble plus lente pour le moment au Sénégal, les projections peuvent servir de base de reflexion. La situation au Sénégal est similaire à celle il y a 15 jours aux Pays-Bas, mais il aura fallu 7 jours aux Pays-Bas contre 18 au Sénégal pour y arriver. Les chiffres des Pays-Bas sont automatiquement extraits de cet article Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands")
 
-#df_nl = pd.read_csv("df_nl.csv")
+df_nl = pd.read_csv("df_nl.csv")
+
+plt.figure(figsize=(16,10))
+plt.plot(df_nl['Netherlands'], linestyle="--", linewidth=5, label="Pays-Bas")
+plt.plot(df_nl['Senegal'],label="Sénégal", linewidth=5)
+plt.title("Evolution des cas au Sénégal et aux Pays-Bas")
+plt.legend()
+st.pyplot(plt)
 
 # IV. Contamination
 st.markdown("---")
