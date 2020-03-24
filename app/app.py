@@ -396,7 +396,7 @@ else :
     st.markdown("---")
     st.subheader("Yoqqute limu ñi ame Koronaa")
 
-    st.write("La courbe 'Positif' représente l'ensemble des cas, et la courbe 'Actifs' élimine les cas guéris et représente le nombre de cas actifs.")
+    st.write("Yoqqute 'Positif' mi mooy wanee ñi amee jagorogui ñeup, ak yoqqute 'Actifs' mi mooy wañi ñigua xamane tanee wer ñañu teey nataal limu ñu 'actifs'.")
     evol_cases['Actifs'] = evol_cases['Positif'] - evol_cases['Guéri']
 
     #highlight = alt.selection(type='single', on='mouseover',fields=['value'], nearest=True)
@@ -421,7 +421,7 @@ else :
     #st.write((chart + chart2).interactive())
 
     st.markdown("---")
-    st.subheader("Comparaison avec les Pays-Bas")
+    st.subheader("Meengële ak reewu Pays-Bas")
 
     st.write("Senegal reewle bigua xamane tane limu wëy dëkkee dafa meggo ak reewu Pays-bas (lu eup Fukk ak jurrom benn million), ba taxna a meengële meuna dox di diggënte ñaari dëkk yooyee. Donete yoqqute Jangorëy Koronaa gui ci reewum Senegaal la geune yeexee ci cunu jooni yalla taye, luñu setlu ci ni Jangoro gui di doxee diarna bayi xel wayee itameu lathena ñu xalateci bu bax. Fi gua xamenee mome leu rewu Senegaal tolu ci Jangorëy Koronaa dafa mengo ci fukki fan ak juroom ci ginaaw fi reew mi di Pays-Bas tolone, wayee xayma gogu boye seteu juroom ñaari faneule guir rew Pays-bas tee ci Senegaal fukki fan ak juroom ñeet. Lim yii aju ci reewu  Pays-Bas ñuguiko jeulé ci Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands. ")
 
