@@ -7,11 +7,6 @@ import datetime
 import altair as alt
 import matplotlib.pyplot as plt
 
-# Find coordinates
-from geopy.geocoders import Nominatim
-geolocator = Nominatim(user_agent="myapp2")
-import time
-
 # Plot static maps
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
@@ -31,7 +26,7 @@ import plotly.express as px
 
 st.header("COVID-19 au Sénégal 🇸🇳")
 
-st.sidebar.markdown("*Dernière mise à jour: 23/03/2020*")
+st.sidebar.markdown("*Dernière mise à jour: 24/03/2020*")
 st.sidebar.markdown("---")
 st.sidebar.header("Ressources utiles")
 
