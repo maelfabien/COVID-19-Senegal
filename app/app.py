@@ -166,7 +166,7 @@ st.write(ch0)
 st.markdown("---")
 st.subheader("Comparaison avec les Pays-Bas")
 
-st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 millions), et une comparaison peut rapidement être dressée. Bien que la progression semble plus lente pour le moment au Sénégal, les projections peuvent servir de base de reflexion. La situation au Sénégal est similaire à celle il y a 15 jours aux Pays-Bas, mais il aura fallu 7 jours aux Pays-Bas contre 18 au Sénégal pour y arriver. Les chiffres des Pays-Bas sont automatiquement extraits de cet article Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands")
+st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 millions), et même si beaucoup d'éléments rendent la comparaison très difficile, cela peut servir de base de réflexion. La progression semble, d'après les cas recensés, plus lente pour le moment au Sénégal qu'aux Pays-Bas. Il aura fallu 7 jours aux Pays-Bas contre 18 au Sénégal pour arriver au cap de 80 malades. Les chiffres des Pays-Bas sont automatiquement extraits de cet article Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands")
 
 df_nl = pd.read_csv("df_nl.csv")
 
