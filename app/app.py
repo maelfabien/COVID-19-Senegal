@@ -245,7 +245,7 @@ if langue == "Français":
     ch = alt.Chart(df).mark_bar().encode(
     	x = 'Age:Q',
         y=alt.Y('count()', title='Nombre de patients')
-    ).properties(title="atu aji wop gui ", height=300, width=700)
+    ).properties(title="atu aji wop gii ", height=300, width=700)
 
     st.write(ch)
 
@@ -258,7 +258,7 @@ if langue == "Français":
     ch2 = alt.Chart(df.dropna(subset=['Ville'])).mark_bar().encode(
     	x = 'Ville:N',
         y=alt.Y('count()', title='Nombre de patients')
-    ).properties(title="dëkku waye aji wop gui", height=300, width=700)
+    ).properties(title="dëkku waye aji wop gi", height=300, width=700)
 
     st.write(ch2)
 
@@ -280,20 +280,20 @@ else :
     st.sidebar.markdown("---")
     st.sidebar.header("Ressources utiles")
 
-    st.sidebar.markdown("Numero guir wotee bu jamp 1: **78 172 10 81**")
-    st.sidebar.markdown("Numero guir wotee bu jamp 2: **76 765 97 31**")
-    st.sidebar.markdown("Numero guir wotee bu jamp 3: **70 717 14 92**")
+    st.sidebar.markdown("Numero ngir wotee bu jamp 1: **78 172 10 81**")
+    st.sidebar.markdown("Numero ngir wotee bu jamp 2: **76 765 97 31**")
+    st.sidebar.markdown("Numero ngir wotee bu jamp 3: **70 717 14 92**")
     st.sidebar.markdown("Numero boye wotee tee do fayye: **800 00 50 50**")
     st.sidebar.markdown("SAMU: **1515**")
     st.sidebar.markdown("Besel ci sa telefone: **#2121#**")
     st.sidebar.markdown("[Saytul sa yarame ci Jangoroji ci Prevcovid19](http://www.prevcovid19.com/#/teste)")
-    st.sidebar.markdown("[Tweetru ministre gui eub walu wergu yaram](https://twitter.com/MinisteredelaS1)")
+    st.sidebar.markdown("[Tweetru ministre gi eub walu wergu yaram](https://twitter.com/MinisteredelaS1)")
     st.sidebar.markdown("[Booleb xeeti mbir ak màndargaay jumtukaayu](https://github.com/maelfabien/COVID-19-Senegal)")
     st.sidebar.markdown("---")
 
     st.sidebar.header("Jokko ak wa ministere")
 
-    st.sidebar.markdown("Ministre gui eub walu wergu yaram ak boolem boko / Fann Residence")
+    st.sidebar.markdown("Ministre gi eub walu wergu yaram ak boolem boko / Fann Residence")
     st.sidebar.markdown("Rue Aimé Césaire, Dakar, Sénégal")
     st.sidebar.markdown("+221 800 00 50 50 - contact@sante.gouv.sn")
 
@@ -423,7 +423,7 @@ else :
     st.markdown("---")
     st.subheader("Meengële ak reewu Pays-Bas")
 
-    st.write("Senegal reewle bigua xamane tane limu wëy dëkkee dafa meggo ak reewu Pays-bas (lu eup Fukk ak jurrom benn million), ba taxna a meengële meuna dox di diggënte ñaari dëkk yooyee. Donete yoqqute Jangorëy Koronaa gui ci reewum Senegaal la geune yeexee ci cunu jooni yalla taye, luñu setlu ci ni Jangoro gui di doxee diarna bayi xel wayee itameu lathena ñu xalateci bu bax. Fi gua xamenee mome leu rewu Senegaal tolu ci Jangorëy Koronaa dafa mengo ci fukki fan ak juroom ci ginaaw fi reew mi di Pays-Bas tolone, wayee xayma gogu boye seteu juroom ñaari faneule guir rew Pays-bas tee ci Senegaal fukki fan ak juroom ñeet. Lim yii aju ci reewu  Pays-Bas ñuguiko jeulé ci Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands. ")
+    st.write("Senegal reewle bigua xamane tane limu wëy dëkkee dafa meggo ak reewu Pays-bas (lu eup Fukk ak jurrom benn million), ba taxna a meengële meuna dox di diggënte ñaari dëkk yooyee. Donete yoqqute Jangorëy Koronaa gi ci reewum Senegaal la geune yeexee ci cunu jooni yalla taye, luñu setlu ci ni Jangoro gi di doxee diarna bayi xel wayee itameu lathena ñu xalateci bu bax. Fi gua xamenee mome leu rewu Senegaal tolu ci Jangorëy Koronaa dafa mengo ci fukki fan ak juroom ci ginaaw fi reew mi di Pays-Bas tolone, wayee xayma gogu boye seteu juroom ñaari faneule ngir rew Pays-bas tee ci Senegaal fukki fan ak juroom ñeet. Lim yii aju ci reewu  Pays-Bas ñuguiko jeulé ci Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands. ")
 
     df_nl = pd.read_csv("df_nl.csv")
 
@@ -438,7 +438,7 @@ else :
     st.markdown("---")
     st.subheader("Tassarok Jangorogui")
 
-    st.write("Ñugui xamee ñeneu ñu jeulee Jangoroji ci ñu juguee bimeu rew, ci niit ñu feebar yigua xamené ño waleu ñeni niit. Limu ñigua xamné ño ameu Jangoroji tee jeuléko ci biir rewmi, moye waleu gui geuna ragalu ci walantee Jangoroji.")
+    st.write("Ñugui xamee ñeneu ñu jeulee Jangoroji ci ñu juguee bimeu rew, ci niit ñu feebar yigua xamené ño waleu ñeni niit. Limu ñigua xamné ño ameu Jangoroji tee jeuléko ci biir rewmi, moye waleu gi geuna ragalu ci walantee Jangoroji.")
 
     facteur = df[['Date', 'Facteur']].dropna()
     facteur['Count'] = 1
@@ -491,14 +491,14 @@ else :
     # V. Population
     st.markdown("---")
     st.subheader("Way-dëkk ñu feebar daleu.")
-    st.write("Limyi ñu jeufediko mougui juguee ci lu minitere buye saytu lu aju ci waalu wergu yaraam di feeñal ci aye diotaayame bess bu diot guir xibaaree askanew Senegal lu aju ci jagorëy koronaa bi ci Senegal.")
+    st.write("Limyi ñu jeufediko mougui juguee ci lu minitere buye saytu lu aju ci waalu wergu yaraam di feeñal ci aye diotaayame bess bu diot ngir xibaaree askanew Senegal lu aju ci jagorëy koronaa bi ci Senegal.")
 
     st.write("1. At ñu eupe  ci yi Jangoroji di diap ", np.mean(df['Age'].dropna()), " ans")
 
     ch = alt.Chart(df).mark_bar().encode(
         x = 'Age:Q',
         y=alt.Y('count()', title='Limu ñi feebar')
-    ).properties(title="Atu aji wop gui", height=300, width=700)
+    ).properties(title="Atu aji wop gi", height=300, width=700)
 
     st.write(ch)
 
@@ -523,7 +523,7 @@ else :
 
     st.write(df['Resident Senegal'].dropna().value_counts())
 
-    st.write("6. Faan ñigua xamné aji wop gui ci laye teud lalu opital: ", np.mean(df['Temps Hospitalisation (j)'].dropna()), " faan")
+    st.write("6. Faan ñigua xamné aji wop gi ci laye teud lalu opital: ", np.mean(df['Temps Hospitalisation (j)'].dropna()), " faan")
     # V. fagaru 
     st.markdown("---")
     st.subheader("Ngir fagaru ci jangoro koronã bi ")
