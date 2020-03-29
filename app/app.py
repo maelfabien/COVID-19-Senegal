@@ -30,7 +30,7 @@ if langue == "Français":
 
     st.header("COVID-19 au Sénégal 🇸🇳")
 
-    st.sidebar.markdown("*Dernière mise à jour: 25/03/2020*")
+    st.sidebar.markdown("*Dernière mise à jour: 29/03/2020*")
     st.sidebar.markdown("---")
     st.sidebar.header("Ressources utiles")
 
@@ -56,7 +56,7 @@ if langue == "Français":
 
     # I. Dataframe
 
-    df = pd.read_csv("COVID_Dakar.csv", sep=";")
+    df = pd.read_csv("COVID_Senegal.csv", sep=";")
     df['Date'] = pd.to_datetime(df['Date'], dayfirst=True)
 
     #st.write(df)
@@ -276,7 +276,7 @@ else :
 
     st.header("Xibaar yu aju ci Jangorëy Koronaa ci Senegal 🇸🇳")
 
-    st.sidebar.markdown("*Yeesal gu muj: 25/03/2020*")
+    st.sidebar.markdown("*Yeesal gu muj: 29/03/2020*")
     st.sidebar.markdown("---")
     st.sidebar.header("Ressources utiles")
 
@@ -302,7 +302,7 @@ else :
 
     # I. Dataframe
 
-    df = pd.read_csv("COVID_Dakar.csv", sep=";")
+    df = pd.read_csv("COVID_Senegal.csv", sep=";")
     df['Date'] = pd.to_datetime(df['Date'], dayfirst=True)
 
     #st.write(df)
