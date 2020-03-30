@@ -30,7 +30,7 @@ if langue == "Français":
 
     st.header("COVID-19 au Sénégal 🇸🇳")
 
-    st.sidebar.markdown("*Dernière mise à jour: 29/03/2020*")
+    st.sidebar.markdown("*Dernière mise à jour: 30/03/2020*")
     st.sidebar.markdown("---")
     st.sidebar.header("Ressources utiles")
 
@@ -276,7 +276,7 @@ else :
 
     st.header("Xibaar yu aju ci Jangorëy Koronaa ci Senegal 🇸🇳")
 
-    st.sidebar.markdown("*Yeesal gu muj: 29/03/2020*")
+    st.sidebar.markdown("*Yeesal gu muj: 30/03/2020*")
     st.sidebar.markdown("---")
     st.sidebar.header("Ressources utiles")
 
