@@ -245,7 +245,7 @@ if langue == "Français":
     ch = alt.Chart(df).mark_bar().encode(
     	x = 'Age:Q',
         y=alt.Y('count()', title='Nombre de patients')
-    ).properties(title="atu aji wop gii ", height=300, width=700)
+    ).properties(title="Age des patients ", height=300, width=700)
 
     st.write(ch)
 
@@ -258,7 +258,7 @@ if langue == "Français":
     ch2 = alt.Chart(df.dropna(subset=['Ville'])).mark_bar().encode(
     	x = 'Ville:N',
         y=alt.Y('count()', title='Nombre de patients')
-    ).properties(title="dëkku waye aji wop gi", height=300, width=700)
+    ).properties(title="Ville des cas", height=300, width=700)
 
     st.write(ch2)
 
@@ -266,11 +266,7 @@ if langue == "Français":
 
     st.write(df['Resident Senegal'].dropna().value_counts())
 
-    st.write("5. La plupart des personnes malades résident au Sénégal")
-
-    st.write(df['Resident Senegal'].dropna().value_counts())
-
-    st.write("6. Le temps d'hospitalisation moyen pour le moment est de : ", np.mean(df['Temps Hospitalisation (j)'].dropna()), " jours")
+    st.write("5. Le temps d'hospitalisation moyen pour le moment est de : ", np.mean(df['Temps Hospitalisation (j)'].dropna()), " jours")
 
 else :
 
