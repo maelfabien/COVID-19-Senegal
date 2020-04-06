@@ -167,20 +167,6 @@ if langue == "Français":
 
     #st.write((chart + chart2).interactive())
 
-    st.markdown("---")
-    st.subheader("Comparaison avec les Pays-Bas")
-
-    st.write("Le Sénégal a une taille de population similaire aux Pays-Bas (±16 millions), et même si beaucoup d'éléments rendent la comparaison très difficile, cela peut servir de base de réflexion. La progression semble, d'après les cas recensés, plus lente pour le moment au Sénégal qu'aux Pays-Bas. Il aura fallu 7 jours aux Pays-Bas contre 18 au Sénégal pour arriver au cap de 80 malades. Les chiffres des Pays-Bas sont automatiquement extraits de cet article Wikipedia: https://en.wikipedia.org/wiki/2020_coronavirus_pandemic_in_the_Netherlands")
-
-    df_nl = pd.read_csv("df_nl.csv")
-
-    plt.figure(figsize=(16,10))
-    plt.plot(df_nl['Netherlands'], linestyle="--", linewidth=5, label="Pays-Bas")
-    plt.plot(df_nl['Senegal'],label="Sénégal", linewidth=5)
-    plt.figtext(.5,.9,'Evolution des cas au Sénégal et aux Pays-Bas', fontsize=30, ha='center')
-    plt.legend()
-    st.pyplot(plt)
-
     # IV. Contamination
     st.markdown("---")
     st.subheader("Contamination")
